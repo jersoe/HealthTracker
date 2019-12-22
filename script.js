@@ -6,15 +6,23 @@ const state = {
 
 class View {
     currentState=state.STOPPED;
+    model=null;
 
     constructor(){
-        console.log("Hello from the View constructor.");
         /*Tie view methods to UI elements.*/
         $(document).on("click", "#start_stop", this.btnStartStop);
     }
 
+    setModel = function(m){
+        this.model=m;
+    }
+
     btnStartStop = function() {
-        console.log("StartStop was clicked.");
+        console.log(this.currentState);
+        if (this.currentState=state.STOPPED) {
+            console.log(this.model);
+            this.model.helloFromModel();
+        }
     }
 }
 
@@ -22,8 +30,12 @@ class Model {
     view;
 
     constructor(v){
-        console.log("Hello from the Model constructor.");
         this.view=v;
+        v.setModel(this);
+    }
+
+    helloFromModel=function(){
+        console.log("Hello from model");
     }
 }
 
