@@ -19,7 +19,7 @@ class View {
 
     btnStartStop = function() {
         console.log(this.currentState);
-        if (this.currentState=state.STOPPED) {
+        if (this.currentState==state.STOPPED) {
             console.log(this.model);
             this.model.helloFromModel();
         }
